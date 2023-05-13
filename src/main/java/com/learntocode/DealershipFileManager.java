@@ -2,10 +2,12 @@ package com.learntocode;
 
 import java.io.*;
 
-public class DealershipFileManager {
-    private String Dealership;
+import static java.lang.Double.parseDouble;
 
-    public static void loadDealership(String fileName) throws FileNotFoundException {
+public class DealershipFileManager {
+    private static String Dealership;
+
+    public static String loadDealership(String fileName) throws FileNotFoundException {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(fileName));
             String line = "";
@@ -14,7 +16,7 @@ public class DealershipFileManager {
                 String description = parts[1];
                 String vendor = parts[2];
                 double amount = parseDouble(parts[3]);
-                Dealership.add(new (date, time, description, vendor, amount));
+                Vehicle.add(new Vehicle(vin, year, make, model, vehicleType, color, odometer, price));
             }
             reader.close();
         } catch (IOException e) {
@@ -22,21 +24,23 @@ public class DealershipFileManager {
         }
 
 
+        public void DealershipFileManager (String Dealership) {
+            Dealership = Dealership;
+        }
 
+        public String getDealership () {
+            return Dealership;
+        }
 
+        public String saveDealership () {
+            return saveDealership();
+        }
 
-    public DealershipFileManager(String dealership) throws FileNotFoundException {
-        Dealership = dealership;
     }
 
-    public String getDealership() {
-        return Dealership;
+    private static String saveDealership() {
+        return null;
     }
-
-    public String saveDealership() {
-        return saveDealership();
-    }
-
 
 
 }

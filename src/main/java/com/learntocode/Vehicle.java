@@ -22,6 +22,10 @@ public class Vehicle {
         this.price = price;
     }
 
+    public static void add(Vehicle vehicle) {
+    }
+
+
     public int getVin() {
         return vin;
     }
