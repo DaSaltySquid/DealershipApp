@@ -20,16 +20,17 @@ public class Dealership {
         return null;
     }
 
-    private void addVehicles() {
+    void addVehicle(Vehicle vehicle) {
     }
 
-    private void removeVehicles() {
+    private void removeVehicles(Vehicle vehicle) {
 
     }
 
-    private void getAllVehicles() {
+    private void getAllVehicles(Vehicle vehicle) {
 
     }
+
     public String getName() {
         return name;
     }
@@ -61,4 +62,7 @@ public class Dealership {
     public void setInventory(ArrayList<Vehicle> inventory) {
         this.inventory = inventory;
     }
+
+
+
 }

@@ -34,10 +34,7 @@ public class DealershipFileManager {
                 lineNumber++;
             }
             br.close();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
-            throw new RuntimeException(e);
             System.out.println("Error loading inventory: " + e.getMessage());
         }
         return dealership;
