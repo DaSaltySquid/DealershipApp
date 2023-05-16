@@ -5,42 +5,52 @@ import java.io.*;
 import static java.lang.Double.parseDouble;
 
 public class DealershipFileManager {
-    private static String Dealership;
-
-    public static String loadDealership(String fileName) throws FileNotFoundException {
+    private Dealership getDealership() {
+        Dealership dealership = null;
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(fileName));
+            BufferedReader br = new BufferedReader(new FileReader("dealership.csv"));
             String line = "";
-            while ((line = reader.readLine()) != null) {
+            int lineNumber = 0;
+            while ((line = br.readLine()) != null) {
                 String[] parts = line.split("\\|");
-                String description = parts[1];
-                String vendor = parts[2];
-                double amount = parseDouble(parts[3]);
-                Vehicle.add(new Vehicle(vin, year, make, model, vehicleType, color, odometer, price));
+                if(lineNumber == 0) {
+                    String name = parts[0];
+                    String address = parts[1];
+                    String phone = parts[2];
+                    dealership = new Dealership(name,address,phone);
+                }
+                else {
+                    int vin = Integer.parseInt(parts[0]);
+                    int year = Integer.parseInt(parts[1]);
+                    String make = parts[2];
+                    String model = parts[3];
+                    String vehicleType = parts[4];
+                    String color = parts[5];
+                    int odometer = Integer.parseInt(parts[6]);
+                    double price = Double.parseDouble(parts[7]);
+                    Vehicle vehicle = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
+                    dealership.addVehicle(vehicle);
+                }
+                lineNumber++;
             }
-            reader.close();
+            br.close();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         } catch (IOException e) {
+            throw new RuntimeException(e);
             System.out.println("Error loading inventory: " + e.getMessage());
         }
-
-
-        public void DealershipFileManager (String Dealership) {
-            Dealership = Dealership;
-        }
-
-        public String getDealership () {
-            return Dealership;
-        }
-
-        public String saveDealership () {
-            return saveDealership();
-        }
-
+        return dealership;
     }
 
-    private static String saveDealership() {
-        return null;
-    }
+
+
+
+
+
+
+
+
 
 
 }
